@@ -8,14 +8,17 @@
 
 import UIKit
 
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        ZYQLeaks.setFilter(key: "UITouch", canPass: true)
+        ZYQLeaks.setPrintOption(printOption: .All)
+        ZYQLeaks.start()
+        
         return true
     }
 
