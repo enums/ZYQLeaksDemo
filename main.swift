@@ -9,9 +9,9 @@
 import UIKit
 import Foundation
 
+ZYQLeaks.setPrintOption(printOption: .All)
+ZYQLeaks.start()
 
-print("Hello")
 autoreleasepool(invoking: {
-    //UIApplicationMain(0, nil, nil, NSStringFromClass(AppDelegate.self))
+    UIApplicationMain(0, nil, nil, NSStringFromClass(AppDelegate.self))
 })
-print("exit")

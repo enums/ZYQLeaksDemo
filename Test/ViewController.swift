@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btn() {
+        ZYQLeaks.printAllCounters()
     }
 }
 

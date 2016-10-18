@@ -40,9 +40,9 @@ class ZYQLeaks: NSObject {
         let exchangeInit = class_getInstanceMethod(objectClass, #selector(NSObject.init(_:)))
         method_exchangeImplementations(objectInit, exchangeInit)
         //Exchange deinit method
-//        let objectDeinit = class_getInstanceMethod(objectClass, #selector(NSObject.deinit))
-//        let exchangeDeinit = class_getClassMethod(objectClass,#selector(NSObject.zyqleaksDeinit))
-//        method_exchangeImplementations(objectDeinit, exchangeDeinit)
+        let objectDeinit = class_getInstanceMethod(objectClass, #selector(NSObject.deinit))
+        let exchangeDeinit = class_getClassMethod(objectClass,#selector(NSObject.zyqleaksDeinit))
+        method_exchangeImplementations(objectDeinit, exchangeDeinit)
     }
     
     static func setPrintOption(printOption: ZYQLeaksPrintOption) {
@@ -114,18 +114,8 @@ extension NSObject {
         ZYQLeaks.shared.objInit(cls: object_getClass(self))
     }
     
-    dynamic func zyqleaksCopy() -> Any {
-        
-        ZYQLeaks.shared.objInit(cls: object_getClass(self))
-        return zyqleaksCopy()
-    }
-    
-    dynamic func zyqleaksMCopy() -> Any {
-        ZYQLeaks.shared.objInit(cls: object_getClass(self))
-        return zyqleaksMCopy()
-    }
-    
     static dynamic func zyqleaksDeinit() {
         ZYQLeaks.shared.objDeinit(cls: self.classForCoder())
     }
+    
 }

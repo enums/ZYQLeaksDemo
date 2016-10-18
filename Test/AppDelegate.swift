@@ -14,11 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        ZYQLeaks.setFilter(key: "UITouch", canPass: true)
-        ZYQLeaks.setPrintOption(printOption: .All)
-        ZYQLeaks.start()
-        
         return true
     }
 
